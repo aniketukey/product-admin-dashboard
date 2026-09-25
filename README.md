@@ -269,3 +269,12 @@ AI tools were used during development for:
 
 All generated code was reviewed, tested and integrated into the project manually.
 
+## Deployment
+
+The application is deployed using Vercel.
+
+Live deployment URL:
+
+```text
+https://product-admin-dashboard-e100zxbs8-aniketukey.vercel.app/login
+```
