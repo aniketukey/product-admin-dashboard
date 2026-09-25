@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams, } from "next/navigation";
 import EmptyState from "../../components/EmptyState";
 import ErrorState from "../../components/ErrorState";
@@ -19,7 +19,7 @@ import ProductCard from "../../components/ProductCard";
 import Pagination from "../../components/Pagination";
 import useDebounce from "../../hooks/useDebounce";
 
-export default function ProductsPage() {
+function ProductsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const allowedPageSizes = [10, 20, 50];
@@ -554,5 +554,14 @@ export default function ProductsPage() {
 
       </main>
     </div>
+  );
+}
+
+
+export default function ProductsPage() {
+  return (
+    <Suspense fallback={<div className="p-6">Loading...</div>}>
+      <ProductsContent />
+    </Suspense>
   );
 }
